@@ -269,10 +269,7 @@ bool isSafemodeDisabled() {
     if (zygote_access(XPOSED_SAFEMODE_DISABLE, F_OK) == 0)
         return true;
     else
-        // Disable Xposed safe mode on Samsung Roms
-        // Samsung Knox/Mdpp will reject xposed art libraries and lead to
-        // a bootloop if TW hooks are not executed on Xposed Bridge
-        return (zygote_access(SAMSUNG_TW_JAR, F_OK) == 0);
+        return false;
 }
 
 /** Check whether the delay for safemode should be skipped. */
